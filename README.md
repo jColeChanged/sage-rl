@@ -12,3 +12,21 @@ python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
+
+Step 4.  Before you can do training you'll need to configure your accelerate config.
+
+```bash
+accelerate config
+```
+
+Once the accelerator is in place you can do supervised fine-tuning with:
+
+```bash
+trl sft --model_name_or_path facebook/opt-125m --dataset_name imdb --output_dir opt-sft-imdb
+```
+
+Direct policy optimization with:
+
+```bash
+trl dpo --model_name_or_path facebook/opt-125m --output_dir trl-hh-rlhf --dataset_name trl-internal-testing/hh-rlhf-trl-style
+````
